@@ -31,7 +31,7 @@ all	:	$(OBJ)
 		$(CC) $(DEFLAGS) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS)
 
 debug	:	DEFLAGS += -g3
-debug	:	$(all)
+debug	:	all
 
 tests_run	:
 		$(CC) -o unit_tests src/*.c $(CFFLAGS)
@@ -53,4 +53,4 @@ fclean	:	clean
 
 re	:	fclean all
 
-.PHONY	:	all tests_run clean fclean re
+.PHONY	:	all debug tests_run clean fclean re
