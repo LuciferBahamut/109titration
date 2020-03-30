@@ -19,7 +19,7 @@ typedef struct values_s
     double *taby;
 } values_t;
 
-int start(int ac, char **av);
+int start(int ac, char **av, values_t *v);
 
 int display_help(void);
 int error_handling(char *file);

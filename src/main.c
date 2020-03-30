@@ -9,5 +9,7 @@
 
 int main(int ac, char **av)
 {
-    return (start(ac, av));
+    values_t v;
+
+    return (start(ac, av, &v));
 }
