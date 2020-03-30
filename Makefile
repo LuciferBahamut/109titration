@@ -11,13 +11,13 @@ SRC	=	src/main.c 		\
 		src/start.c		\
 		src/display_help.c	\
 		src/error_handling.c	\
-		src/write_error.c	\
-		src/my_strlen.c		\
-		src/my_strcmp.c
+		utils/write_error.c	\
+		utils/my_strlen.c	\
+		utils/my_strcmp.c
 
 CC	=	gcc
 
-DEFLAGS	=	-W -Wextra -Wall -lm
+CFLAGS	=	-W -Wextra -Wall
 
 CPPFLAGS	=	-I./include/
 
@@ -28,10 +28,10 @@ LDFLAGS	=	-lm
 OBJ	=	$(SRC:.c=.o)
 
 all	:	$(OBJ)
-		$(CC) $(DEFLAGS) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS)
+		$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS)
 
-debug	:	DEFLAGS += -g3
-debug	:	all
+debug	:	CFLAGS += -g3
+debug	:	re
 
 tests_run	:
 		$(CC) -o unit_tests src/*.c $(CFFLAGS)
@@ -49,7 +49,6 @@ fclean	:	clean
 		rm -f include/*~ 	\
 		rm -f *.gcda 		\
 		rm -f *.gcno		\
-		tree
 
 re	:	fclean all
 

@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int check_buffer(char *buff)
+static int check_buffer(char *buff)
 {
     for (int i = 0; buff[i] != '\0'; i++) {
         if (buff[i] == '\n' || buff[i] == ';' || buff[i] == '.')
@@ -26,7 +26,7 @@ int check_buffer(char *buff)
     return (FALSE);
 }
 
-char *read_file(int fd, char *file)
+static char *read_file(int fd, char *file)
 {
     struct stat st;
     char *buffer;
@@ -49,9 +49,14 @@ int error_handling(char *file)
         write_error(STR_ERROR_OPEN);
         return (TRUE);
     }
-    if ((buffer = read_file(fd, file)) == NULL)
+    if ((buffer = read_file(fd, file)) == NULL) {
+        free(buffer);
         return (TRUE);
-    if (check_buffer(buffer))
+    }
+    if (check_buffer(buffer)) {
+        free(buffer);
         return (TRUE);
+    }
+    free(buffer);
     return (FALSE);
 }
