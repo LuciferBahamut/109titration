@@ -7,8 +7,11 @@
 
 NAME	=	109titration
 
-SRC	=	src/main.c 	\
-		src/start.c
+SRC	=	src/main.c 		\
+		src/start.c		\
+		src/error_handling.c	\
+		src/write_error.c	\
+		src/my_strlen.c
 
 CC	=	gcc
 
@@ -18,10 +21,12 @@ CPPFLAGS	=	-I./include/
 
 CFFLAGS	=	tests/unit_tests.c -I./include --coverage -lcriterion
 
+LDFLAGS	=	-lm
+
 OBJ	=	$(SRC:.c=.o)
 
 all	:	$(OBJ)
-		$(CC) $(DEFLAGS) -o $(NAME) $(OBJ) $(CPPFLAGS)
+		$(CC) $(DEFLAGS) -o $(NAME) $(OBJ) $(CPPFLAGS) $(LDFLAGS)
 
 debug	:	DEFLAGS += -g3
 debug	:	$(all)
