@@ -14,6 +14,8 @@ int start(int ac, char **av)
         write_error(STR_ERROR_ARG);
         return (ERROR);
     }
+    if (my_strcmp(av[1], "-h"))
+        return (display_help());
     if (error_handling(av[1]))
         return (ERROR);
     return (SUCCESS);
