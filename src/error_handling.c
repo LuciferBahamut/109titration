@@ -50,13 +50,16 @@ int error_handling(char *file)
         return (TRUE);
     }
     if ((buffer = read_file(fd, file)) == NULL) {
+        close(fd);
         free(buffer);
         return (TRUE);
     }
     if (check_buffer(buffer)) {
+        close(fd);
         free(buffer);
         return (TRUE);
     }
+    close(fd);
     free(buffer);
     return (FALSE);
 }

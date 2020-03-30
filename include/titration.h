@@ -13,6 +13,12 @@
 #define TRUE 1
 #define FALSE 0
 
+typedef struct values_s
+{
+    double *tabx;
+    double *taby;
+} values_t;
+
 int start(int ac, char **av);
 
 int display_help(void);
