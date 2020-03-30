@@ -11,6 +11,7 @@ SRC	=	src/main.c 		\
 		src/start.c		\
 		src/display_help.c	\
 		src/error_handling.c	\
+		src/fill_struct.c	\
 		utils/write_error.c	\
 		utils/my_strlen.c	\
 		utils/my_strcmp.c
