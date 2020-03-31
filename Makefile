@@ -9,9 +9,12 @@ NAME	=	109titration
 
 SRC	=	src/main.c 		\
 		src/start.c		\
+		src/fill_struct.c	\
+		src/check_struct.c	\
+		src/titration.c		\
+		src/display.c		\
 		src/display_help.c	\
 		src/error_handling.c	\
-		src/fill_struct.c	\
 		utils/write_error.c	\
 		utils/my_strlen.c	\
 		utils/my_strcmp.c

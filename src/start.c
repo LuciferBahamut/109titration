@@ -22,5 +22,8 @@ int start(int ac, char **av, values_t *v)
         return (ERROR);
     v = malloc(sizeof(values_t));
     open_file(av, v);
+    if (check_struct(v))
+        return (ERROR);
+    titration(v);
     return (SUCCESS);
 }

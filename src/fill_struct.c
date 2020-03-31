@@ -54,7 +54,7 @@ static void recup_values(char *file, values_t *v)
     int nb = count_line(file);
     char **split = my_split(file, nb);
 
-    nb = nb / 2;
+    nb = (nb / 2);
     v->nb = nb;
     v->tabx = malloc(sizeof(double) * nb);
     v->taby = malloc(sizeof(double) * nb);
@@ -85,4 +85,5 @@ void open_file(char **av, values_t *v)
     read(fd, buffer, st.st_size);
     buffer[st.st_size + 1] = '\0';
     recup_values(buffer, v);
+    v->eq_p = 0;
 }
