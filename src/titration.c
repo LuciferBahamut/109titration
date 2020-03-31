@@ -35,22 +35,31 @@ void compute_derivate(values_t *v)
         stock = compute_forward(v, i);
         stock1 = compute_backward(v, i);
         if (v->h < v->hprime) {
-            printf("%.2f\t%.2f\n",v->h, v->hprime);
+            //printf("%.2f\t%.2f\n",v->h, v->hprime);
             if (v->h >=1 && v->hprime >= 1) {
                 coef = v->hprime / v->h;
+                //printf("%.2f\n", coef);
+                //              printf("A\n");
                 v->dev[i] = ((stock * coef) + stock1) / (v->h + v->hprime);
             }
             else {
                 coef = v->h / v->hprime;
+//                printf("%.2f\n",coef);
+//                printf("A2\n");
                 v->dev[i] = (stock + (stock1 * coef)) / (v->h + v->hprime);
             }
-            printf("A\n");
         }
         else if (v->h > v->hprime) {
-            coef = v->h / v->hprime;
-            printf("%.2f\t%.2f\t%.2f\n",v->h, v->hprime, coef);
-            v->dev[i] = (stock + (stock1 * coef)) / (v->h + v->hprime);
-            printf("B\n");
+            if (v->h >=1 && v->hprime >= 1) {
+                coef = v->h / v->hprime;
+                v->dev[i] = (stock + (stock1 * coef)) / (v->h + v->hprime);
+                printf("B1\n");
+            }
+            else {
+                coef = v->hprime / v->h;
+                v->dev[i] = ((stock * coef) + stock1) / (v->h + v->hprime);
+                printf("B2\n");
+            }
         }
         else
             v->dev[i] = (stock + stock1) / 2;
