@@ -63,12 +63,3 @@ int error_handling(char *file)
     free(buffer);
     return (FALSE);
 }
-
-
-/* idee de base : soit on met tout dans la struct directement depuis la gest d'erreur
-                  soit on fait ça en complément de la gest d'erreur
- anyway : - add int error dans la struct et l'envoyer dans la gest d'erreur pour
-            faire moins crade (un seul free et un seul close);
-          - faire un check pour savoir si une des valeurs est nulle (error)
-          - prendre en compte les lignes comme ;9 ou 8;
-*/
