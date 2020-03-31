@@ -29,6 +29,7 @@ typedef struct values_s
 int start(int ac, char **av, values_t *v);
 void titration(values_t *v);
 void compute_derivate(values_t *v);
+void compute_sec_derivative(values_t *v);
 
 // ~~~~~~~~~~~~~~~~~ //
 //      DISPLAY      //

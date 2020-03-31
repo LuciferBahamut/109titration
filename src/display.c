@@ -19,6 +19,8 @@ void display_derivative(values_t *v)
 void display_sec_derivative(values_t *v)
 {
     printf("\nSecond derivative:\n");
+    for (int i = 2; i != v->nb - 2; i++)
+        printf("%.1f ml -> %.2f\n", v->tabx[i], v->sec[i]);
     printf("\n");
 }
 

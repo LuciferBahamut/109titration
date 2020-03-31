@@ -26,4 +26,6 @@ void titration(values_t *v)
     display_derivative(v);
     find_eq_point(v);
     display_equivalence(v);
+    compute_sec_derivative(v);
+    display_sec_derivative(v);
 }
