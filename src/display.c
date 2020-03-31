@@ -11,8 +11,8 @@
 void display_derivative(values_t *v)
 {
     printf("Derivative:\n");
-    for (int i = 1, j = 1; i != v->nb - 1; i++, j++)
-        printf("%.1f ml -> %.2f\n", v->tabx[i], v->dev[j]);
+    for (int i = 1; i != v->nb - 1; i++)
+        printf("%.1f ml -> %.2f\n", v->tabx[i], v->dev[i]);
     printf("\n");
 }
 
