@@ -73,6 +73,16 @@ static void recup_values(char *file, values_t *v)
     free(split);
 }
 
+static void fill_deriv(values_t *v)
+{
+    v->dev = malloc(sizeof(double) * v->nb - 1);
+    v->sec = malloc(sizeof(double) * v->nb - 1);
+    for (int i = 0; i != v->nb; i++) {
+        v->dev[i] = 0;
+        v->sec[i] = 0;
+    }
+}
+
 void open_file(char **av, values_t *v)
 {
     int fd = 0;
@@ -86,4 +96,5 @@ void open_file(char **av, values_t *v)
     buffer[st.st_size + 1] = '\0';
     recup_values(buffer, v);
     v->eq_p = 0;
+    fill_deriv(v);
 }
