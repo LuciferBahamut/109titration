@@ -27,6 +27,8 @@ void display_sec_derivative(values_t *v)
 void display_sec_derivative_esti(values_t *v)
 {
     printf("Second derivative estimated:\n");
+    for (int i = 1; i <= v->j; i += 2)
+        printf("%.1f ml -> %.2f\n", v->f[i - 1], v->f[i]);
     printf("\n");
 }
 

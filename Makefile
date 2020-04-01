@@ -14,6 +14,7 @@ SRC	=	src/main.c 		\
 		src/titration.c		\
 		src/compute_deriv.c	\
 		src/compute_sec_deriv.c	\
+		src/compute_estim.c	\
 		src/display.c		\
 		src/display_help.c	\
 		src/error_handling.c	\

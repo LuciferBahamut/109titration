@@ -7,8 +7,16 @@
 
 #include "titration.h"
 
-static void find_prec_eq_point(values_t *v)
+static void search_value_around_zero(values_t *v)
 {
+    for (int i = 1; i <= v->j; i += 2)
+        if (v->f[i] < 0)
+            v->f[i] = v->f[i] * -1;
+    v->eq_p = v->f[1];
+    for (int i = 1; i <= v->j - 2; i += 2) {
+        if (v->f[i] > v->f[i + 2])
+            v->eq_p = v->f[i + 1];
+    }
 }
 
 static void find_eq_point(values_t *v)
@@ -28,4 +36,8 @@ void titration(values_t *v)
     display_equivalence(v);
     compute_sec_derivative(v);
     display_sec_derivative(v);
+    compute_estim(v);
+    display_sec_derivative_esti(v);
+    search_value_around_zero(v);
+    display_equivalence(v);
 }
