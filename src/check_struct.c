@@ -5,9 +5,9 @@
 ** check the structure's values
 */
 
+#include <stdio.h>
 #include "titration.h"
 #include "error_msg.h"
-#include <stdio.h>
 
 int check_struct(values_t *v)
 {

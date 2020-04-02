@@ -5,8 +5,8 @@
 ** display help
 */
 
-#include "titration.h"
 #include <stdio.h>
+#include "titration.h"
 
 int display_help(void)
 {

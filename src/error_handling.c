@@ -5,13 +5,13 @@
 ** error_handling
 */
 
-#include "titration.h"
-#include "error_msg.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "titration.h"
+#include "error_msg.h"
 
 static int check_buffer(char *buff)
 {

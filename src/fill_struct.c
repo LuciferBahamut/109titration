@@ -5,14 +5,14 @@
 ** fill_struct
 */
 
-#include "titration.h"
-#include "error_msg.h"
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "titration.h"
+#include "error_msg.h"
 
 static char **my_split(char *src, int nb)
 {

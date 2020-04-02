@@ -5,8 +5,8 @@
 ** display the values
 */
 
-#include "titration.h"
 #include <stdio.h>
+#include "titration.h"
 
 void display_derivative(values_t *v)
 {
