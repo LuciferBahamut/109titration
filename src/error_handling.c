@@ -13,6 +13,19 @@
 #include "titration.h"
 #include "error_msg.h"
 
+static int check_number(char *buff)
+{
+    if (buff[0] == ';')
+        return (TRUE);
+    for (int i = 1; buff[i] != '\0'; i++) {
+        if (buff[i] == ';' && buff[i + 1] == '\0')
+            return (TRUE);
+        if (buff[i] == ';' && (buff[i - 1] == '\n' || buff[i + 1] == '\n'))
+            return (TRUE);
+    }
+    return (FALSE);
+}
+
 static int check_buffer(char *buff)
 {
     for (int i = 0; buff[i] != '\0'; i++) {
@@ -20,6 +33,10 @@ static int check_buffer(char *buff)
             continue;
         if (buff[i] < '0' || buff[i] > '9') {
             write_error(STR_ERROR_INV);
+            return (TRUE);
+        }
+        if (check_number(buff)) {
+            write_error(STR_ERROR_LINE);
             return (TRUE);
         }
     }
