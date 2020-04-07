@@ -10,6 +10,16 @@
 #include "titration.h"
 #include "error_msg.h"
 
+static void free_struct(values_t *v)
+{
+    free(v->tabx);
+    free(v->taby);
+    free(v->dev);
+    free(v->sec);
+    free(v->f);
+    free(v);
+}
+
 int start(int ac, char **av, values_t *v)
 {
     if (ac != 2) {
@@ -25,5 +35,6 @@ int start(int ac, char **av, values_t *v)
     if (check_struct(v))
         return (ERROR);
     titration(v);
+    free_struct(v);
     return (SUCCESS);
 }

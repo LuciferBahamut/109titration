@@ -23,7 +23,7 @@ static char **my_split(char *src, int nb)
     for (int j = 0; src[i] != '\0'; i++) {
         if (src[i] == ';' || src[i] == '\n')
             j++;
-        str[j] = malloc(sizeof(char) * (i + 1));
+        str[j] = malloc(sizeof(char) * i);
     }
     i = 0;
     for (int j = 0; src[i] != '\0'; i++, k++) {
@@ -68,8 +68,6 @@ static void recup_values(char *file, values_t *v)
             k++;
         }
     }
-    for (int i = 0; split[i] != NULL; i++)
-        free(split[i]);
     free(split);
 }
 
