@@ -54,7 +54,7 @@ void open_file(char **av, values_t *v);
 // ~~~~~~~~~~~~~~~~~ //
 //   UTIL FUNCTION   //
 // ~~~~~~~~~~~~~~~~~ //
-void write_error(char *str);
+void write_error(char const *str);
 int my_strlen(char const *str);
 int my_strcmp(char const *str1, char const *str2);
 char **my_split(char *src, int nb);
@@ -62,9 +62,9 @@ char **my_split(char *src, int nb);
 // ~~~~~~~~~~~~~~~~~ //
 //      MACROS       //
 // ~~~~~~~~~~~~~~~~~ //
-#define SUCCESS 0
-#define ERROR 84
-#define TRUE 1
-#define FALSE 0
+static const int SUCCESS = 0;
+static const int ERROR = 84;
+static const int TRUE = 1;
+static const int FALSE = 0;
 
 #endif /* _TITRATION_H_ */
