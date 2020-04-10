@@ -18,9 +18,7 @@ SRC	=	src/main.c 		\
 		src/display.c		\
 		src/display_help.c	\
 		src/error_handling.c	\
-		utils/write_error.c	\
-		utils/my_strlen.c	\
-		utils/my_strcmp.c
+		$(wildcard utils/*.c)
 
 CC	=	gcc
 

@@ -43,9 +43,11 @@ static void compute_before(values_t *v, int i)
 void compute_estim(values_t *v)
 {
     int i = 2;
+    double k = 0;
 
-    v->f = malloc(sizeof(double) * ((v->tabx[i + 1] - v->tabx[i - 1]) + 1) * 2);
     for (; v->eq_p != v->tabx[i]; i++);
+    k = (((v->tabx[i + 1] - v->tabx[i - 1]) * 10) + 1) * 2;
+    v->f = malloc(sizeof(double) * k);
     v->j = 0;
     compute_before(v, i);
     v->eq_p += 0.1;

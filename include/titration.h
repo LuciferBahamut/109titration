@@ -33,6 +33,7 @@ void titration(values_t *v);
 void compute_derivate(values_t *v);
 void compute_sec_derivative(values_t *v);
 void compute_estim(values_t *v);
+void free_struct(values_t *v);
 
 // ~~~~~~~~~~~~~~~~~ //
 //      DISPLAY      //
@@ -56,6 +57,7 @@ void open_file(char **av, values_t *v);
 void write_error(char *str);
 int my_strlen(char const *str);
 int my_strcmp(char const *str1, char const *str2);
+char **my_split(char *src, int nb);
 
 // ~~~~~~~~~~~~~~~~~ //
 //      MACROS       //

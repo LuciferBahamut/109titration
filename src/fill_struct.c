@@ -14,31 +14,6 @@
 #include "titration.h"
 #include "error_msg.h"
 
-static char **my_split(char *src, int nb)
-{
-    char **str = malloc(sizeof(char *) * nb);
-    int i = 0;
-    int k = 0;
-
-    for (int j = 0; src[i] != '\0'; i++) {
-        if (src[i] == ';' || src[i] == '\n')
-            j++;
-        str[j] = malloc(sizeof(char) * i);
-    }
-    i = 0;
-    for (int j = 0; src[i] != '\0'; i++, k++) {
-        if (src[i] == ';' || src[i] == '\n') {
-            str[j][k] = '\0';
-            j++;
-            i++;
-            k = 0;
-        }
-        str[j][k] = src[i];
-    }
-    str[nb] = NULL;
-    return (str);
-}
-
 static int count_line(char *file)
 {
     int nb = 0;
@@ -68,15 +43,17 @@ static void recup_values(char *file, values_t *v)
             k++;
         }
     }
+    for (int i = 0; split[i] != NULL; i++)
+        free(split[i]);
     free(split);
 }
 
 static void fill_deriv(values_t *v)
 {
-    v->dev = malloc(sizeof(double) * v->nb - 1);
-    v->sec = malloc(sizeof(double) * v->nb - 1);
+    v->dev = malloc(sizeof(double) * v->nb);
+    v->sec = malloc(sizeof(double) * v->nb);
     for (int i = 0; i != v->nb; i++) {
-        v->dev[i] = 0;
+        v->dev[i] = (double)0;
         v->sec[i] = 0;
     }
 }
@@ -91,8 +68,10 @@ void open_file(char **av, values_t *v)
     stat(av[1], &st);
     buffer = malloc(sizeof(char) * st.st_size + 1);
     read(fd, buffer, st.st_size);
-    buffer[st.st_size + 1] = '\0';
+    buffer[st.st_size] = '\0';
     recup_values(buffer, v);
+    free(buffer);
+    close(fd);
     v->eq_p = 0;
     fill_deriv(v);
 }

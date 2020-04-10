@@ -27,12 +27,12 @@ static double compute_backward_bis(values_t *v, int i)
 
 void compute_sec_derivative(values_t *v)
 {
-    double stock = 0;
-    double stock1 = 0;
+    double stk = 0;
+    double stk1 = 0;
 
-    for(int i = 2; i != v->nb - 2; i++) {
-        stock = compute_forward_bis(v, i);
-        stock1 = compute_backward_bis(v, i);
-        v->sec[i] = ((stock * v->hprime) + (stock1 * v->h)) / (v->h + v->hprime);
+    for (int i = 2; i != v->nb - 2; i++) {
+        stk = compute_forward_bis(v, i);
+        stk1 = compute_backward_bis(v, i);
+        v->sec[i] = ((stk * v->hprime) + (stk1 * v->h)) / (v->h + v->hprime);
     }
 }

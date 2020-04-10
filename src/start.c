@@ -10,7 +10,7 @@
 #include "titration.h"
 #include "error_msg.h"
 
-static void free_struct(values_t *v)
+void free_struct(values_t *v)
 {
     free(v->tabx);
     free(v->taby);

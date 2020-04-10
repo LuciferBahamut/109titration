@@ -52,6 +52,7 @@ static char *read_file(int fd, char *file)
     stat(file, &st);
     buffer = malloc(sizeof(char) * st.st_size + 1);
     rd = read(fd, buffer, st.st_size);
+    buffer[st.st_size] = '\0';
     if (rd == -1 || rd == 0)
         return (NULL);
     return (buffer);
